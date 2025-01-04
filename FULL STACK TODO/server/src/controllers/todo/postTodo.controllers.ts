@@ -5,7 +5,7 @@ import { ObjectId } from "mongoose";
 interface IResponseData {
   _id: string;
   todoTitle: String;
-  isComplete: String;
+  isComplete: boolean;
 }
 
 const postTodoControllers = async (
@@ -19,7 +19,7 @@ const postTodoControllers = async (
     const data: IResponseData = {
       _id: saveData._id as any,
       todoTitle: saveData.todoTitle,
-      isComplete: saveData.todoDescription,
+      isComplete: saveData.isComplete,
     };
     res
       .status(201)

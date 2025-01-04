@@ -9,6 +9,11 @@ const getAllTodoControllers = async (
   try {
     const data = await Todo.aggregate([
       {
+        $match: {
+          isComplete: false,
+        },
+      },
+      {
         $project: {
           _id: 1,
           todoTitle: 1,

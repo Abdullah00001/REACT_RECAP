@@ -1,7 +1,7 @@
 import React from "react";
 
 interface IInterface {
-  type: "text" | "email" | "password" | "number" | "search"|"checkbox";
+  type: "text" | "email" | "password" | "number" | "search" | "checkbox";
   placeholder?: string;
   className: string;
   defaultValue?: string | number;
@@ -9,7 +9,7 @@ interface IInterface {
   name: string;
   required?: boolean;
   disabled?: boolean;
-  
+  onClick?: () => void;
 }
 
 const Input: React.FC<IInterface> = ({
@@ -20,7 +20,8 @@ const Input: React.FC<IInterface> = ({
   placeholder,
   required = false,
   type,
-  defaultValue
+  defaultValue,
+  onClick,
 }) => {
   return (
     <>
@@ -33,6 +34,7 @@ const Input: React.FC<IInterface> = ({
         required={required}
         disabled={disabled}
         defaultValue={defaultValue}
+        onClick={onClick}
       />
     </>
   );

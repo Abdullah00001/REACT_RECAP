@@ -8,19 +8,18 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 import { Todo } from "../../models/todo.models.js";
-const postTodoControllers = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+const isCompleteTodoControllers = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const newTodo = new Todo(req.body);
-        const saveData = yield newTodo.save();
-        const data = {
-            _id: saveData._id,
-            todoTitle: saveData.todoTitle,
-            isComplete: saveData.isComplete,
-        };
-        res
-            .status(201)
-            .json({ status: "sccess", message: "New Todo Create Successful", data });
-        return;
+        const { id } = req.params;
+        yield Todo.findByIdAndUpdate(id, {
+            $set: {
+                isComplete: req.body.isComplete,
+            },
+        });
+        res.status(200).json({
+            ststatus: "success",
+            message: "Task Completed",
+        });
     }
     catch (error) {
         const err = error;
@@ -28,4 +27,4 @@ const postTodoControllers = (req, res, next) => __awaiter(void 0, void 0, void 0
         next();
     }
 });
-export default postTodoControllers;
+export default isCompleteTodoControllers;

@@ -47,4 +47,20 @@ const updateTodo = async (id: string | null, data: ITodo) => {
   }
 };
 
-export { getAllTodos, getTodo, deleteTodo, addTodo, updateTodo };
+const isCompleteTodo = async (id: string | null, data: ITodo) => {
+  try {
+    return await axiosInstance.patch(`/todo/${id}`, data);
+  } catch (error) {
+    const err = error as any;
+    throw err.message;
+  }
+};
+
+export {
+  getAllTodos,
+  getTodo,
+  deleteTodo,
+  addTodo,
+  updateTodo,
+  isCompleteTodo,
+};

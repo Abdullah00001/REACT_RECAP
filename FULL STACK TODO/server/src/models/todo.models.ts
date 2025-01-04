@@ -10,7 +10,7 @@ const TodoSchema = new Schema<ITodo>(
   {
     todoTitle: { type: String, required: true },
     todoDescription: { type: String, required: true },
-    isComplete: { type: Boolean },
+    isComplete: { type: Boolean, default: false },
   },
   { timestamps: true }
 );

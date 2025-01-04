@@ -13,7 +13,7 @@ const EditTodoToggle: React.FC = () => {
   const [task, setTask] = useState<ITodo>({});
   const [updatedTask, setUpdatedTask] = useState<ITodo | null>(null);
   const values = useTodoContext();
-  const { setIsEditToggle, todoId, todos } = values;
+  const { setIsEditToggle, todoId } = values;
 
   const handleEditTodoSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

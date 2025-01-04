@@ -12,6 +12,11 @@ const getAllTodoControllers = (req, res, next) => __awaiter(void 0, void 0, void
     try {
         const data = yield Todo.aggregate([
             {
+                $match: {
+                    isComplete: false,
+                },
+            },
+            {
                 $project: {
                     _id: 1,
                     todoTitle: 1,

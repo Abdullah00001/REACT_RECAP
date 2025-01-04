@@ -20,7 +20,8 @@ const AddTodo: React.FC = () => {
         todoDescription: e.target.description.value,
       };
       const response = await addTodo(data);
-      setTodos([...todos,response.data.data])
+      setTodos([...todos, response.data.data]);
+      e.target.reset()
     } catch (error) {
       console.log(error);
       setLoading(false);
